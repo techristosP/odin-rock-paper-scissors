@@ -14,29 +14,29 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    const playerChoice = prompt('Choose rock, paper or scissors');
-    return playerChoice.toLocaleLowerCase();
+    let playerChoice;
+    do {
+      playerChoice = prompt('Choose rock, paper or scissors').toLowerCase();
+    }
+    while (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors');
+    return playerChoice;
 } 
 
 let roundWinner; //tie = -1, player = 1, computer = 0
 function playRound(playerSelection, computerSelection) {   
   if (playerSelection == computerSelection) {
       roundWinner = -1;
-      alert("It's a draw! Play again!")
-
-      // console.log("DB: It's a draw!");
+      // alert("It's a draw! Play again!")
       return "It's a draw!";
   }
     else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')) {
       roundWinner = 1; 
-      alert("It's a win! Play again!")
-      // console.log("DB: It's a win!"); 
+      // alert("It's a win! Play again!")
       return 'You Win! ' + playerSelection.charAt(0).toUpperCase() + playerSelection.substring(1) + ' beats ' + computerSelection.charAt(0).toUpperCase() + computerSelection.substring(1);
     }
     else {
       roundWinner = 0;
-      alert("It's a loss! Play again!")
-      // console.log("DB: It's a loss!");
+      // alert("It's a loss! Play again!")
       return 'You Lose! ' + computerSelection.charAt(0).toUpperCase() + computerSelection.substring(1) + ' beats ' + playerSelection.charAt(0).toUpperCase() + playerSelection.substring(1);
     }
   }
